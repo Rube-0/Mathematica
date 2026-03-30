@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+
 # Mathematica
+
 =======
+
 # Hello World
 
 Hello, world!
->>>>>>> f775358 (init)
+
+> > > > > > > f775358 (init)
