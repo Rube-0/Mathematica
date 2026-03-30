@@ -1,0 +1,680 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28148,        672]
+NotebookOptionsPosition[     27345,        641]
+NotebookOutlinePosition[     27709,        657]
+CellTagsIndexPosition[     27666,        654]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+\:8fd0\:7528\:6b63\:5219\:8868\:8fbe\:5f0f\:ff0c\:8f85\:52a9 hangman \:6e38\
+\:620f\:7684\:7834\:89e3\:3002
+\:7b2c\:4e00\:4e2a\:6846\:8868\:793a\:5f85\:5b9a\:8bcd\:6c47\:ff0c\:7528 . \
+\:8868\:793a\:672a\:77e5\:5b57\:6bcd\:3002
+\:7b2c\:4e8c\:4e2a\:6846\:8868\:793a\:6392\:9664\:7684\:5b57\:6bcd\:3002
+\:7b2c\:4e09\:9879\:8868\:793a\:5728\:5269\:4f59\:7684\:5b57\:6bcd\:4e2d\:ff0c\
+\:6309\:7167\:300c\:88ab\:5269\:4f59\:5355\:8bcd\:5305\:542b\:6b21\:6570\:300d\
+\:4ece\:591a\:5230\:5c11\:7684\:6392\:5e8f\:ff0c\:4e5f\:5373\:4e0b\:4e00\:6b65\
+\:7684\:6700\:4f18\:9009\:62e9\:3002\:ff08\:6b64\:5904\:4e0d\:8003\:8651\:8bcd\
+\:8bed\:5e38\:7528\:7a0b\:5ea6\:ff0c\:4e14\:5728\:51fa\:73b0\:6b21\:6570\:76f8\
+\:7b49\:65f6\:6309\:7167\:5b57\:6bcd\:987a\:5e8f\:5012\:5e8f\:6392\:5217\:ff09\
+
+\:5217\:8868\:7b2c\:56db\:9879\:8868\:793a\:53ef\:80fd\:7684\:8bcd\:8bed\:3002\
+\:65b9\:6cd5\:662f\:7528\:6b63\:5219\:8868\:8fbe\:5f0f\:7684[^abc]\:8868\:8fbe\
+\:5f0f\:3002\:7279\:610f\:5728\:300c [ \:300d\:540e\:7559\:4e86\:4e00\:4e2a\
+\:7a7a\:683c\:ff0c\:4ee5\:9632\:51fabug\:3002
+\:6700\:540e\:7528\:4e86\:4e00\:4e2a\:89c4\:5219\:8c03\:6362\:4e86\:7b2c\:4e09\
+\:9879\:548c\:7b2c\:56db\:9879\:7684\:987a\:5e8f\:ff0c\:56e0\:4e3a\:76f4\:63a5\
+\:6362\:7684\:8bdd\:53ef\:80fd\:4f1a\:6539\:53d8\:8fd0\:7b97\:987a\:5e8f\:ff0c\
+\:53ef\:80fd\:51fa bug\:3002
+\:5f85\:8865\:5145\:ff1a\:6309\:7167\:8bcd\:9891\:987a\:5e8f\:6392\:5217\:5019\
+\:9009\:5355\:8bcd\:3002\:667a\:80fd\:81ea\:52a8\:731c\:6d4b\:5bf9\:5f08\
+\>", "Text",
+ CellChangeTimes->{{3.684131452100026*^9, 3.684131461840127*^9}, 
+   3.684134115197486*^9, {3.684134148108355*^9, 3.6841341777254457`*^9}, {
+   3.684134252007949*^9, 3.6841344250400476`*^9}, {3.684134513888466*^9, 
+   3.6841345424810266`*^9}, {3.684142568503104*^9, 3.6841426041905403`*^9}, {
+   3.684195259836576*^9, 3.684195295742334*^9}, {3.6841954712429457`*^9, 
+   3.68419553630729*^9}, {3.6843209785406713`*^9, 3.684321080326923*^9}, {
+   3.691843352125121*^9, 3.691843372505146*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"hangman", ",", "nhangman", ",", "words"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"hangman", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", 
+    RowBox[{"nhangman", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Dynamic", "@", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"InputField", "[", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "hangman", "]"}], ",", "String", ",", 
+          RowBox[{
+          "FieldHint", "\[Rule]", "\"\<\:5f85\:5b9a\:8bcd\:6c47\>\""}]}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"InputField", "[", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "nhangman", "]"}], ",", "String", ",", 
+          RowBox[{
+          "FieldHint", "\[Rule]", "\"\<\:6392\:9664\:5b57\:6bcd\>\""}]}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"words", "=", 
+         RowBox[{"DictionaryLookup", "[", 
+          RowBox[{
+           RowBox[{"RegularExpression", "[", 
+            RowBox[{"StringReplace", "[", 
+             RowBox[{"hangman", ",", "\[IndentingNewLine]", 
+              RowBox[{"\"\<.\>\"", "\[Rule]", " ", 
+               RowBox[{"\"\<[^ \>\"", "<>", 
+                RowBox[{"StringJoin", "@@", 
+                 RowBox[{"StringCases", "[", 
+                  RowBox[{"hangman", ",", "LetterCharacter"}], "]"}]}], "<>", 
+                "nhangman", "<>", "\"\<]\>\""}]}]}], "]"}], "]"}], ",", 
+           RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}], ",", 
+        RowBox[{"Select", "[", 
+         RowBox[{
+          RowBox[{"Sort", "[", 
+           RowBox[{
+            RowBox[{"Complement", "[", 
+             RowBox[{
+              RowBox[{"CharacterRange", "[", 
+               RowBox[{"\"\<a\>\"", ",", "\"\<z\>\""}], "]"}], ",", 
+              RowBox[{"Characters", "@", 
+               RowBox[{"ToLowerCase", "@", "hangman"}]}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Total", "@", 
+               RowBox[{"Boole", "@", 
+                RowBox[{"StringContainsQ", "[", 
+                 RowBox[{"words", ",", "#1", ",", 
+                  RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}], ">", 
+              RowBox[{"Total", "@", 
+               RowBox[{"Boole", "@", 
+                RowBox[{"StringContainsQ", "[", 
+                 RowBox[{"words", ",", "#2", ",", 
+                  RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}]}], 
+             "&"}]}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"ContainsAll", "[", 
+            RowBox[{
+             RowBox[{"ToLowerCase", "@", 
+              RowBox[{"DeleteDuplicates", "@", 
+               RowBox[{"Flatten", "@", 
+                RowBox[{"Characters", "@", "words"}]}]}]}], ",", 
+             RowBox[{"{", "#", "}"}]}], "]"}], "&"}]}], "]"}]}], "}"}]}], "/.", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"a_", ",", "b_", ",", "c_", ",", "d_"}], "}"}], 
+      "\[RuleDelayed]", 
+      RowBox[{"{", 
+       RowBox[{"a", ",", "b", ",", "d", ",", "c"}], "}"}]}]}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.691843797881667*^9, 3.691843798002404*^9}}],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`hangman$$ = "bu.", $CellContext`nhangman$$ = 
+  "aoeidyt", $CellContext`words$$ = {"bug", "bum", "bun", "bur", "bus"}}, 
+  DynamicBox[ToBoxes[{
+     InputField[
+      Dynamic[$CellContext`hangman$$], String, FieldHint -> 
+      "\:5f85\:5b9a\:8bcd\:6c47"], 
+     InputField[
+      Dynamic[$CellContext`nhangman$$], String, FieldHint -> 
+      "\:6392\:9664\:5b57\:6bcd"], 
+     Select[
+      Sort[
+       Complement[
+        CharacterRange["a", "z"], 
+        Characters[
+         ToLowerCase[$CellContext`hangman$$]]], Total[
+         Boole[
+          StringContainsQ[$CellContext`words$$, #, IgnoreCase -> True]]] > 
+       Total[
+         Boole[
+          StringContainsQ[$CellContext`words$$, #2, IgnoreCase -> True]]]& ], 
+      ContainsAll[
+       ToLowerCase[
+        DeleteDuplicates[
+         Flatten[
+          Characters[$CellContext`words$$]]]], {#}]& ], $CellContext`words$$ = 
+     DictionaryLookup[
+       RegularExpression[
+        StringReplace[$CellContext`hangman$$, "." -> StringJoin["[^ ", 
+           Apply[StringJoin, 
+            
+            StringCases[$CellContext`hangman$$, 
+             LetterCharacter]], $CellContext`nhangman$$, "]"]]], IgnoreCase -> 
+       True]}, StandardForm],
+   ImageSizeCache->{623.14697265625, {40.150390625, 17.}}],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{
+  3.691815077093089*^9, {3.6918429211495132`*^9, 3.691842945307559*^9}, 
+   3.691843258963169*^9, 3.691913252891262*^9, 3.69191357435362*^9, 
+   3.691914002917341*^9, 3.691961553209372*^9, 3.691962171157576*^9, 
+   3.691963218298542*^9, 3.69197139778302*^9, 3.691971443167183*^9}]
+}, Open  ]],
+
+Cell["\:8fd0\:7528Do\:5faa\:73af\:7ed9\:51fa\:6309\:7167\:300c\:5b57\:6bcd\
+\:9891\:6b21\:6392\:5e8f\:300d\:8fde\:7eed7\:6b21\:5168\:90e8\:731c\:9519\
+\:7684\:5355\:8bcd", "Text",
+ CellChangeTimes->{{3.691822941019848*^9, 3.691823021581657*^9}, {
+  3.691842728190702*^9, 3.691842733578432*^9}, {3.691842893730522*^9, 
+  3.691842904544817*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "hangman", ",", "nhangman", ",", "words", ",", "cs", ",", "nlist"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Reap", "[", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"nlist", "=", 
+           RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Do", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"hangman", "=", 
+               RowBox[{"StringJoin", "@@", 
+                RowBox[{"Table", "[", 
+                 RowBox[{"\"\<.\>\"", ",", "i"}], "]"}]}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"nhangman", "=", 
+               RowBox[{"StringJoin", "@@", "nlist"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"words", "=", 
+               RowBox[{"DictionaryLookup", "[", 
+                RowBox[{
+                 RowBox[{"RegularExpression", "[", 
+                  RowBox[{"StringReplace", "[", 
+                   RowBox[{"hangman", ",", "\[IndentingNewLine]", 
+                    RowBox[{"\"\<.\>\"", "\[Rule]", " ", 
+                    RowBox[{"\"\<[^ \>\"", "<>", 
+                    RowBox[{"StringJoin", "@@", 
+                    RowBox[{"StringCases", "[", 
+                    RowBox[{"hangman", ",", "LetterCharacter"}], "]"}]}], "<>",
+                     "nhangman", "<>", "\"\<]\>\""}]}]}], "]"}], "]"}], ",", 
+                 RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}], ";", 
+              RowBox[{"cs", "=", 
+               RowBox[{"Select", "[", 
+                RowBox[{
+                 RowBox[{"Sort", "[", 
+                  RowBox[{
+                   RowBox[{"Complement", "[", 
+                    RowBox[{
+                    RowBox[{"CharacterRange", "[", 
+                    RowBox[{"\"\<a\>\"", ",", "\"\<z\>\""}], "]"}], ",", 
+                    RowBox[{"Characters", "@", 
+                    RowBox[{"ToLowerCase", "@", "hangman"}]}]}], "]"}], ",", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Total", "@", 
+                    RowBox[{"Boole", "@", 
+                    RowBox[{"StringContainsQ", "[", 
+                    RowBox[{"words", ",", "#1", ",", 
+                    RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}], 
+                    ">", 
+                    RowBox[{"Total", "@", 
+                    RowBox[{"Boole", "@", 
+                    RowBox[{"StringContainsQ", "[", 
+                    RowBox[{"words", ",", "#2", ",", 
+                    RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}]}], 
+                    "&"}]}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"ContainsAll", "[", 
+                   RowBox[{
+                    RowBox[{"ToLowerCase", "@", 
+                    RowBox[{"DeleteDuplicates", "@", 
+                    RowBox[{"Flatten", "@", 
+                    RowBox[{"Characters", "@", "words"}]}]}]}], ",", 
+                    RowBox[{"{", "#", "}"}]}], "]"}], "&"}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"TrueQ", "[", 
+                 RowBox[{
+                  RowBox[{"words", "==", 
+                   RowBox[{"{", "}"}]}], "||", 
+                  RowBox[{"cs", "\[Equal]", 
+                   RowBox[{"{", "}"}]}]}], "]"}], ",", 
+                RowBox[{"Break", "[", "]"}], ",", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"nlist", ",", 
+                  RowBox[{
+                  "cs", "\[LeftDoubleBracket]", "1", 
+                   "\[RightDoubleBracket]"}]}], "]"}]}], "]"}], ";"}], 
+             "\[IndentingNewLine]", ",", "8"}], "]"}], 
+           RowBox[{"(*", 
+            RowBox[{"\:5141\:8bb8\:731c\:6d4b7\:6b21", 
+             RowBox[{"(", 
+              RowBox[{"8", "-", "1"}], ")"}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"Sow", "[", "words", "]"}]}], ";"}], "\[IndentingNewLine]",
+          ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "23"}], "}"}]}], "]"}], 
+       RowBox[{"(*", "\:6700\:957f\:5355\:8bcd\:957f\:5ea6\:4e3a23", "*)"}], 
+       "\[IndentingNewLine]", "]"}], "\[LeftDoubleBracket]", 
+      RowBox[{"2", ",", "1"}], "\[RightDoubleBracket]"}], 
+     RowBox[{"(*", "Reap\:7684\:540e\:4e00\:9879", "*)"}], "//", 
+     "AbsoluteTiming"}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.691807025853434*^9, 3.6918070393891973`*^9}, {
+  3.691807106997106*^9, 3.691807202399518*^9}, {3.6918072890533113`*^9, 
+  3.69180731881629*^9}, {3.6918076324657288`*^9, 3.6918078378064957`*^9}, {
+  3.691808361279804*^9, 3.6918083638552523`*^9}, {3.6918084816063023`*^9, 
+  3.691808487025037*^9}, {3.6918085452384167`*^9, 3.691808657828033*^9}, {
+  3.6918086898801727`*^9, 3.691808691547287*^9}, {3.6918087812266273`*^9, 
+  3.691808789557054*^9}, {3.69180899921721*^9, 3.691808999302043*^9}, {
+  3.691822771175014*^9, 3.691822911978201*^9}, {3.691842752701152*^9, 
+  3.691842792465004*^9}, {3.691843315163048*^9, 3.6918433303318777`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"27.410828`", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"BC\"\>", ",", "\<\"by\"\>", ",", "\<\"CD\"\>", 
+       ",", "\<\"cw\"\>", ",", "\<\"db\"\>", ",", "\<\"dB\"\>", 
+       ",", "\<\"dc\"\>", ",", "\<\"DJ\"\>", ",", "\<\"GP\"\>", 
+       ",", "\<\"HQ\"\>", ",", "\<\"jg\"\>", ",", "\<\"kc\"\>", 
+       ",", "\<\"kw\"\>", ",", "\<\"kW\"\>", ",", "\<\"PC\"\>", 
+       ",", "\<\"pH\"\>", ",", "\<\"Rh\"\>", ",", "\<\"Rx\"\>", 
+       ",", "\<\"TB\"\>", ",", "\<\"TV\"\>", ",", "\<\"Ty\"\>", 
+       ",", "\<\"XL\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"BBC\"\>", ",", "\<\"BMW\"\>", ",", "\<\"brr\"\>", 
+       ",", "\<\"CBS\"\>", ",", "\<\"CFC\"\>", ",", "\<\"CNN\"\>", 
+       ",", "\<\"DDT\"\>", ",", "\<\"DVD\"\>", ",", "\<\"FDR\"\>", 
+       ",", "\<\"GMT\"\>", ",", "\<\"GNP\"\>", ",", "\<\"JFK\"\>", 
+       ",", "\<\"LBJ\"\>", ",", "\<\"LLB\"\>", ",", "\<\"LSD\"\>", 
+       ",", "\<\"MGM\"\>", ",", "\<\"mks\"\>", ",", "\<\"Mrs\"\>", 
+       ",", "\<\"NBC\"\>", ",", "\<\"NFL\"\>", ",", "\<\"PCs\"\>", 
+       ",", "\<\"ppm\"\>", ",", "\<\"TNT\"\>", ",", "\<\"TVs\"\>", 
+       ",", "\<\"VCR\"\>", ",", "\<\"VDT\"\>", ",", "\<\"WWW\"\>", 
+       ",", "\<\"XML\"\>", ",", "\<\"XXL\"\>"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\<\"HTML\"\>", ",", "\<\"HTTP\"\>"}], "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"{", "}"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.691822939137862*^9, 3.691842817841957*^9, 
+  3.691843362428903*^9}]
+}, Open  ]],
+
+Cell["\<\
+\:5b9a\:4e49 hangmantest \:51fd\:6570\:ff0c\:8fd0\:7528 While \:5faa\:73af\
+\:7ed9\:51fa\:5355\:8bcd\:ff08x\:ff09\:5728 times \:6b21\:9519\:8bef\:5185\
+\:5f97\:5230\:7684\:7ed3\:679c\:3002
+times \:7684\:7f3a\:7701\:503c\:4e3a7.\
+\>", "Text",
+ CellChangeTimes->{{3.691968216005734*^9, 3.69196832005*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"hangmantest", "[", 
+    RowBox[{"x_String", ",", 
+     RowBox[{"times_Integer:", "7"}]}], "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "tw", ",", "truelist", ",", "ntruelist", ",", "hangman", ",", "words", 
+       ",", "cs"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tw", "=", "x"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"truelist", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ntruelist", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"cs", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"words", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"TrueQ", "[", 
+         RowBox[{
+          RowBox[{"Length", "@", "ntruelist"}], "<", "times"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"hangman", "=", 
+          RowBox[{"StringReplace", "[", 
+           RowBox[{"tw", ",", 
+            RowBox[{
+             RowBox[{"RegularExpression", "[", 
+              RowBox[{"\"\<[^ \>\"", "<>", 
+               RowBox[{"StringJoin", "@@", "truelist"}], "<>", "\"\<]\>\""}], 
+              "]"}], "\[RuleDelayed]", "\"\<.\>\""}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"words", "=", 
+          RowBox[{"DictionaryLookup", "[", 
+           RowBox[{
+            RowBox[{"RegularExpression", "[", 
+             RowBox[{"StringReplace", "[", 
+              RowBox[{"hangman", ",", "\[IndentingNewLine]", 
+               RowBox[{"\"\<.\>\"", "\[Rule]", " ", 
+                RowBox[{"\"\<[^ \>\"", "<>", 
+                 RowBox[{"StringJoin", "@@", "truelist"}], "<>", 
+                 RowBox[{"StringJoin", "@@", "ntruelist"}], "<>", 
+                 "\"\<]\>\""}]}]}], "]"}], "]"}], ",", 
+            RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"cs", "=", 
+          RowBox[{"Select", "[", 
+           RowBox[{
+            RowBox[{"Sort", "[", 
+             RowBox[{
+              RowBox[{"Complement", "[", 
+               RowBox[{
+                RowBox[{"CharacterRange", "[", 
+                 RowBox[{"\"\<a\>\"", ",", "\"\<z\>\""}], "]"}], ",", 
+                RowBox[{"ToLowerCase", "@", "truelist"}]}], "]"}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Total", "@", 
+                 RowBox[{"Boole", "@", 
+                  RowBox[{"StringContainsQ", "[", 
+                   RowBox[{"words", ",", "#1", ",", 
+                    RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}], 
+                ">", 
+                RowBox[{"Total", "@", 
+                 RowBox[{"Boole", "@", 
+                  RowBox[{"StringContainsQ", "[", 
+                   RowBox[{"words", ",", "#2", ",", 
+                    RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}]}], 
+               "&"}]}], "]"}], ",", 
+            RowBox[{
+             RowBox[{"ContainsAll", "[", 
+              RowBox[{
+               RowBox[{"ToLowerCase", "@", 
+                RowBox[{"DeleteDuplicates", "@", 
+                 RowBox[{"Flatten", "@", 
+                  RowBox[{"Characters", "@", "words"}]}]}]}], ",", 
+               RowBox[{"{", "#", "}"}]}], "]"}], "&"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "@", "cs"}], "\[LessEqual]", "1"}], "||", 
+            RowBox[{
+             RowBox[{"Length", "@", "words"}], "\[LessEqual]", "1"}]}], ",", 
+           RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"StringContainsQ", "[", 
+            RowBox[{"tw", ",", 
+             RowBox[{
+             "cs", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+            "]"}], ",", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"truelist", ",", 
+             RowBox[{
+             "cs", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+            "]"}], ",", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ntruelist", ",", 
+             RowBox[{
+             "cs", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+            "]"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", "words"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.6919639411725283`*^9, 3.6919640140445957`*^9}, {
+  3.691965591378634*^9, 3.691965596435546*^9}, {3.69196570814604*^9, 
+  3.6919657315541897`*^9}, {3.691965921683649*^9, 3.6919659358321743`*^9}, {
+  3.691968021887061*^9, 3.691968022283702*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"hangmantest", "[", 
+  RowBox[{"\"\<fly\>\"", ",", "7"}], "]"}]], "Input",
+ CellChangeTimes->{{3.691964024849854*^9, 3.691964043757053*^9}, {
+  3.691967249145823*^9, 3.691967250999651*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"fly\"\>", ",", "\<\"ply\"\>", ",", "\<\"shy\"\>", 
+   ",", "\<\"sky\"\>", ",", "\<\"sly\"\>", ",", "\<\"spy\"\>", 
+   ",", "\<\"sty\"\>", ",", "\<\"thy\"\>", ",", "\<\"why\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.69196574689018*^9, 3.691967251892748*^9, 
+  3.691968365502666*^9}]
+}, Open  ]],
+
+Cell["\<\
+\:5b9a\:4e49 hangmanable \:51fd\:6570\:ff0c\:8fd0\:7528 While \:5faa\:73af\
+\:5224\:5b9a\:5355\:8bcd\:ff08x\:ff09\:5728 times \:6b21\:9519\:8bef\:5185\
+\:80fd\:5426\:88ab\:786e\:5b9a\:3002\:80fd\:5219\:7ed9\:51fa1\:ff0c\:5426\
+\:5219\:7ed9\:51fa0.
+times \:7684\:7f3a\:7701\:503c\:4e3a7.\
+\>", "Text",
+ CellChangeTimes->{{3.691968216005734*^9, 3.691968359042459*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"hangmanable", ",", "Listable"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hangmanable", "[", 
+   RowBox[{"x_String", ",", 
+    RowBox[{"times_Integer:", "7"}]}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "tw", ",", "truelist", ",", "ntruelist", ",", "hangman", ",", "words", 
+      ",", "cs"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tw", "=", "x"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"truelist", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"ntruelist", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"cs", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"words", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Length", "@", "ntruelist"}], "<", "times"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"hangman", "=", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{"tw", ",", 
+           RowBox[{
+            RowBox[{"RegularExpression", "[", 
+             RowBox[{"\"\<[^ \>\"", "<>", 
+              RowBox[{"StringJoin", "@@", 
+               RowBox[{"ToLowerCase", "@", "truelist"}]}], "<>", 
+              RowBox[{"StringJoin", "@@", 
+               RowBox[{"ToUpperCase", "@", "truelist"}]}], "<>", 
+              "\"\<]\>\""}], "]"}], "\[RuleDelayed]", "\"\<.\>\""}]}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"words", "=", 
+         RowBox[{"DictionaryLookup", "[", 
+          RowBox[{
+           RowBox[{"RegularExpression", "[", 
+            RowBox[{"StringReplace", "[", 
+             RowBox[{"hangman", ",", "\[IndentingNewLine]", 
+              RowBox[{"\"\<.\>\"", "\[Rule]", " ", 
+               RowBox[{"\"\<[^ \>\"", "<>", 
+                RowBox[{"StringJoin", "@@", "truelist"}], "<>", 
+                RowBox[{"StringJoin", "@@", "ntruelist"}], "<>", 
+                "\"\<]\>\""}]}]}], "]"}], "]"}], ",", 
+           RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"cs", "=", 
+         RowBox[{"Select", "[", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{
+             RowBox[{"Complement", "[", 
+              RowBox[{
+               RowBox[{"CharacterRange", "[", 
+                RowBox[{"\"\<a\>\"", ",", "\"\<z\>\""}], "]"}], ",", 
+               RowBox[{"ToLowerCase", "@", "truelist"}]}], "]"}], ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Total", "@", 
+                RowBox[{"Boole", "@", 
+                 RowBox[{"StringContainsQ", "[", 
+                  RowBox[{"words", ",", "#1", ",", 
+                   RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}], 
+               ">", 
+               RowBox[{"Total", "@", 
+                RowBox[{"Boole", "@", 
+                 RowBox[{"StringContainsQ", "[", 
+                  RowBox[{"words", ",", "#2", ",", 
+                   RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}]}]}]}], 
+              "&"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"ContainsAll", "[", 
+             RowBox[{
+              RowBox[{"ToLowerCase", "@", 
+               RowBox[{"DeleteDuplicates", "@", 
+                RowBox[{"Flatten", "@", 
+                 RowBox[{"Characters", "@", "words"}]}]}]}], ",", 
+              RowBox[{"{", "#", "}"}]}], "]"}], "&"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"Length", "@", "cs"}], "\[LessEqual]", "1"}], "||", 
+           RowBox[{
+            RowBox[{"Length", "@", "words"}], "\[LessEqual]", "1"}]}], ",", 
+          RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"StringContainsQ", "[", 
+           RowBox[{"tw", ",", 
+            RowBox[{
+            "cs", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], ",", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"truelist", ",", 
+            RowBox[{
+            "cs", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+           "]"}], ",", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"ntruelist", ",", 
+            RowBox[{
+            "cs", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+           "]"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Boole", "[", 
+      RowBox[{
+       RowBox[{"StringContainsQ", "[", 
+        RowBox[{
+         RowBox[{
+         "words", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+          "tw", ",", 
+         RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], "]"}], "&&", 
+       RowBox[{
+        RowBox[{"Length", "@", "words"}], "\[Equal]", "1"}]}], "]"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwd0ukrgwEAx/E5Gi3mTNMiwzIThWglLySamlx5QV4MKXItMQ9zbUjJRlhR
+c5RiLUyGF0O5ZY4p2osdjiHnG8LkDc9vL759/oEvq6w+v8KVQqFEkEFz+lvF
+rvQ1Td4eXgtHh2wN0J8/0QTdFao2yF9+GoScu6Jx2Ho3ooF0iuEATjukx/CC
+6mKDVhb1Cgq6JHZIeLLvYUJP7zNkKFe+4Sfx8QuDpuLc9kj7PeIDIHNexIQl
++pNImOcv4ELvYGEiDH9v4UGFXpoJ87uNTn8LdwuhK+vQ6coSoxjaTRwhlN+y
+a6BR/CeCkfTzZkiXJLXAS57XErStxupg7qTXuIX0zDfF6dHjwizUlAaqoWw4
+dREOKDt00LAXug+5fj6nUGWVWaCgfP0BcmhalpU05EsbAWMIhwAeN/ILoGHG
+UQdpWX31kLqZI4E89mYHZCRX98M0+eIAVDR0KuGPdXUMaqK1czDK7KmGTd9d
+a/B+S+W0UbdfdUWq9t2ogd4Zlm0oNPntQELxJL4mDeO+E7CyNrvnBl+8iHvh
+P6PAOSc=
+  "]]
+},
+WindowSize->{837, 605},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (2016\:5e742\
+\:670825\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2001, 30, 163, "Text"],
+Cell[CellGroupData[{
+Cell[2584, 54, 3245, 76, 422, "Input"],
+Cell[5832, 132, 1659, 40, 75, "Output"]
+}, Open  ]],
+Cell[7506, 175, 343, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[7874, 184, 5306, 112, 651, "Input"],
+Cell[13183, 298, 2117, 48, 97, "Output"]
+}, Open  ]],
+Cell[15315, 349, 313, 6, 49, "Text"],
+Cell[15631, 357, 4916, 115, 534, "Input"],
+Cell[CellGroupData[{
+Cell[20572, 476, 212, 4, 28, "Input"],
+Cell[20787, 482, 332, 7, 28, "Output"]
+}, Open  ]],
+Cell[21134, 492, 376, 7, 49, "Text"],
+Cell[21513, 501, 5828, 138, 677, "Input"]
+}
+]
+*)
+

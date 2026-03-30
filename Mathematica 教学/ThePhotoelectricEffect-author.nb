@@ -1,0 +1,1638 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframCDFPlayer 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       163,          7]
+NotebookDataLength[     70444,       1630]
+NotebookOptionsPosition[     63602,       1496]
+NotebookOutlinePosition[     65708,       1548]
+CellTagsIndexPosition[     65380,       1536]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["The Photoelectric Effect", "DemoTitle",
+ CellChangeTimes->{3.35696210375764*^9, 
+  3.414278850412036*^9},ExpressionUUID->"b3fc801c-913d-48d7-80f3-\
+33176270bb70"],
+
+Cell[CellGroupData[{
+
+Cell["", "InitializationSection",ExpressionUUID->"60c20e48-00eb-4bad-9eca-ba531b762068"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"M", "[", "1", "]"}], "=", "\"\<Ag\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "2", "]"}], "=", "\"\<Al\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "3", "]"}], "=", "\"\<Au\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "4", "]"}], "=", "\"\<Ca\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "5", "]"}], "=", "\"\<Cs\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "6", "]"}], "=", "\"\<Cu\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "7", "]"}], "=", "\"\<Fe\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "8", "]"}], "=", "\"\<K\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "9", "]"}], "=", "\"\<Mg\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "10", "]"}], "=", "\"\<Na\>\""}], ";", 
+  RowBox[{
+   RowBox[{"M", "[", "11", "]"}], "=", "\"\<Zn\>\""}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4141979488915787`*^9, 3.4141982865771503`*^9}},
+ CellLabel->"In[43]:=",
+ CellID->1004038009,ExpressionUUID->"b0e108e9-2c20-4c2f-afdd-fe2e9e1fa664"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "1", "]"}], "=", 
+   RowBox[{"1240", "/", "4.26"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "2", "]"}], "=", 
+   RowBox[{"1240", "/", "4.28"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "3", "]"}], "=", 
+   RowBox[{"1240", "/", "5.1"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "4", "]"}], "=", 
+   RowBox[{"1240", "/", "2.37"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "5", "]"}], "=", 
+   RowBox[{"1240", "/", "2.14"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "6", "]"}], "=", 
+   RowBox[{"1240", "/", "4.65"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "7", "]"}], "=", 
+   RowBox[{"1240", "/", "4.5"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "8", "]"}], "=", 
+   RowBox[{"1240", "/", "2.3"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "9", "]"}], "=", 
+   RowBox[{"1240", "/", "3.66"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "10", "]"}], "=", 
+   RowBox[{"1240", "/", "2.28"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"\[Lambda]0", "[", "11", "]"}], "=", 
+   RowBox[{"1240", "/", "4.3"}]}], " ", ";"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414198346326552*^9, 3.4141986918164787`*^9}, {
+   3.414252435727911*^9, 3.4142525445654287`*^9}, 3.414254117167058*^9},
+ CellLabel->"In[44]:=",
+ CellID->2087802784,ExpressionUUID->"04d78fd9-3784-4274-86d9-928b94baaca6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Int", "[", 
+   RowBox[{"m_", ",", "\[Lambda]_", ",", "int_"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"\[Lambda]", "\[LessEqual]", 
+     RowBox[{"\[Lambda]0", "[", "m", "]"}]}], ",", "int", ",", "0"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4142533198697853`*^9, 3.4142534306974163`*^9}, {
+   3.414253937435438*^9, 3.414253947506556*^9}},
+ CellLabel->"In[45]:=",
+ CellID->1846947007,ExpressionUUID->"94cb27e6-21c8-4faf-80ba-8295ec552dae"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"g1", "[", 
+   RowBox[{"m_", ",", "\[Lambda]_", ",", "int_"}], "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", 
+    RowBox[{"Thick", ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"100", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "400"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"100", ",", "400"}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"100", ",", "380"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"100", ",", "420"}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"110", ",", "395"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"110", ",", "405"}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"120", ",", "380"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"120", ",", "420"}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"130", ",", "395"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"130", ",", "405"}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"130", ",", "400"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"500", ",", "400"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"500", ",", "325"}], "}"}]}], "}"}], "]"}], ",", "Black", 
+     ",", 
+     RowBox[{"Rectangle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"450", ",", "75"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"550", ",", "100"}], "}"}]}], "]"}], ",", 
+     RowBox[{"Rectangle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"450", ",", "300"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"550", ",", "325"}], "}"}]}], "]"}], ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"500", ",", "75"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"500", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"200", ",", "0"}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"Rectangle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"200", ",", "155"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"350", ",", "245"}], "}"}]}], "]"}], ",", 
+     RowBox[{"Polygon", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"350", ",", "245"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"375", ",", "252"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"375", ",", "148"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"350", ",", "155"}], "}"}]}], "}"}], "]"}], ",", 
+     "\[IndentingNewLine]", "White", ",", 
+     RowBox[{"EdgeForm", "[", 
+      RowBox[{"{", 
+       RowBox[{"Thick", ",", "Black"}], "}"}], "]"}], ",", 
+     RowBox[{"Rectangle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"100", ",", 
+         RowBox[{"-", "25"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"200", ",", "50"}], "}"}]}], "]"}], ",", "Black", ",", 
+     RowBox[{"Thickness", "[", ".01", "]"}], ",", 
+     RowBox[{"Circle", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"150", ",", 
+         RowBox[{"-", "10"}]}], "}"}], ",", "50", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"\[Pi]", "/", "4"}], ",", 
+         RowBox[{"3", 
+          RowBox[{"\[Pi]", "/", "4"}]}]}], "}"}]}], "]"}], ",", "Thick", ",", 
+     "Red", ",", 
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"150", ",", 
+          RowBox[{"-", "10"}]}], "}"}], ",", 
+        RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"150", "-", 
+           RowBox[{"50", 
+            RowBox[{"Cos", "[", 
+             RowBox[{
+              FractionBox["\[Pi]", "4"], "+", 
+              RowBox[{
+               FractionBox[
+                RowBox[{"Int", "[", 
+                 RowBox[{"m", ",", "\[Lambda]", ",", "int"}], "]"}], "100"], 
+               FractionBox["\[Pi]", "2"]}]}], "]"}]}]}], ",", 
+          RowBox[{
+           RowBox[{"-", "10"}], "+", 
+           RowBox[{"50", 
+            RowBox[{"Sin", "[", 
+             RowBox[{
+              FractionBox["\[Pi]", "4"], "+", 
+              RowBox[{
+               FractionBox[
+                RowBox[{"Int", "[", 
+                 RowBox[{"m", ",", "\[Lambda]", ",", "int"}], "]"}], "100"], 
+               FractionBox["\[Pi]", "2"]}]}], "]"}]}]}]}], "}"}]}], "}"}], 
+      "]"}], ",", 
+     RowBox[{
+      RowBox[{"ColorData", "[", "\"\<VisibleSpectrum\>\"", "]"}], "[", 
+      "\[Lambda]", "]"}], ",", 
+     RowBox[{"EdgeForm", "[", "]"}], ",", 
+     RowBox[{"Opacity", "[", 
+      FractionBox["int", "100"], "]"}], ",", 
+     RowBox[{"Polygon", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"375", ",", "240"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"460", ",", "240"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"540", ",", "160"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"375", ",", "160"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"375", ",", "225"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414186285539322*^9, 3.414186417352353*^9}, {
+   3.4141864521740847`*^9, 3.414186512588685*^9}, {3.414186574463306*^9, 
+   3.414186665836625*^9}, {3.414186711170055*^9, 3.414186907945815*^9}, {
+   3.41418696768405*^9, 3.414186978227285*^9}, {3.414187026673189*^9, 
+   3.414187133416102*^9}, {3.414187165178526*^9, 3.414187353801237*^9}, {
+   3.4141874186330967`*^9, 3.4141874189892073`*^9}, {3.4141874786165257`*^9, 
+   3.4141876163981752`*^9}, {3.414187661500601*^9, 3.4141876670284777`*^9}, {
+   3.414187697408897*^9, 3.414187751094701*^9}, {3.4141877856339703`*^9, 
+   3.414187861871538*^9}, {3.4141879546351013`*^9, 3.414187983549088*^9}, {
+   3.414188103328738*^9, 3.414188255121621*^9}, {3.414188327491201*^9, 
+   3.4141883354080563`*^9}, {3.4141884109292393`*^9, 3.414188498914517*^9}, {
+   3.414188636828734*^9, 3.41418866471677*^9}, {3.414188704746214*^9, 
+   3.414188863001246*^9}, {3.414188910221854*^9, 3.414188914027466*^9}, {
+   3.414192973689302*^9, 3.414193004249341*^9}, {3.414193122026391*^9, 
+   3.414193216249146*^9}, {3.414193282105023*^9, 3.414193367392399*^9}, {
+   3.4141933976756496`*^9, 3.414193397815962*^9}, {3.414193452024057*^9, 
+   3.414193498675734*^9}, {3.414193532563594*^9, 3.414193715093091*^9}, {
+   3.414193748496976*^9, 3.414193836578884*^9}, {3.414193866694622*^9, 
+   3.414193866931768*^9}, {3.414193927255768*^9, 3.4141939388191338`*^9}, {
+   3.414193969155323*^9, 3.414193978219338*^9}, {3.414194032917222*^9, 
+   3.414194052661429*^9}, {3.414194115093637*^9, 3.414194190398097*^9}, {
+   3.414194242862137*^9, 3.414194280253974*^9}, {3.414194336934958*^9, 
+   3.414194378963766*^9}, {3.4141944272172747`*^9, 3.4141945074964447`*^9}, {
+   3.414194640886838*^9, 3.414194657435935*^9}, {3.414194695045229*^9, 
+   3.414194705674047*^9}, {3.414194745547923*^9, 3.414194781258731*^9}, {
+   3.414194830207646*^9, 3.414194882307279*^9}, {3.41419668132817*^9, 
+   3.414196707431551*^9}, 3.414197094050335*^9, {3.414197161322425*^9, 
+   3.414197223264085*^9}, {3.414197389333439*^9, 3.4141974883063717`*^9}, {
+   3.414197523525674*^9, 3.414197524637331*^9}, {3.414197574262018*^9, 
+   3.4141976295926027`*^9}, {3.4141976643103333`*^9, 3.41419767398075*^9}, {
+   3.414197706448017*^9, 3.414197727413514*^9}, 3.4141977625783854`*^9, {
+   3.414197823495965*^9, 3.414197829551717*^9}, {3.414199553916892*^9, 
+   3.414199568403244*^9}, {3.414199661439702*^9, 3.4141996689826307`*^9}, {
+   3.414199704175928*^9, 3.414199705135013*^9}, {3.4142000217347317`*^9, 
+   3.414200040655719*^9}, {3.414200079773262*^9, 3.414200083759378*^9}, {
+   3.414200172496853*^9, 3.4142001747960787`*^9}, {3.4142007049581423`*^9, 
+   3.414200747110606*^9}, 3.4142484490388937`*^9, 3.41424922003728*^9, {
+   3.414249252796545*^9, 3.4142492608038607`*^9}, 3.414249318498027*^9, {
+   3.414249362747677*^9, 3.414249364834649*^9}, {3.414249977870843*^9, 
+   3.414250064357629*^9}, {3.4142502132308493`*^9, 3.414250216232292*^9}, {
+   3.414250293381482*^9, 3.414250297483054*^9}, 3.414250405725951*^9, {
+   3.414253453033441*^9, 3.414253462672236*^9}, {3.414253513808914*^9, 
+   3.414253539916271*^9}, {3.4142543968477793`*^9, 3.414254398370962*^9}, {
+   3.4142544764267483`*^9, 3.414254500237318*^9}, {3.4142545464428997`*^9, 
+   3.414254552823081*^9}, {3.4142545984158*^9, 3.4142546290904903`*^9}, 
+   3.414278863706012*^9, {3.686419287438744*^9, 3.686419366266753*^9}, {
+   3.836064017672943*^9, 3.836064043853792*^9}, {3.8360640914447937`*^9, 
+   3.836064097341935*^9}, {3.836064130473742*^9, 3.836064146377288*^9}},
+ CellLabel->"In[46]:=",
+ CellID->616246633,ExpressionUUID->"b60e0c07-6bd2-4963-b15b-4e57fc70b8a4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"color", "[", "m_", "]"}], ":=", "Gray"}], ";", 
+  RowBox[{
+   RowBox[{"color", "[", "3", "]"}], "=", 
+   RowBox[{"RGBColor", "[", 
+    RowBox[{"1", ",", ".843", ",", "0"}], "]"}]}], ";", 
+  RowBox[{
+   RowBox[{"color", "[", "6", "]"}], "=", 
+   RowBox[{"RGBColor", "[", 
+    RowBox[{"1", ",", ".5", ",", "0"}], "]"}]}], ";", 
+  RowBox[{
+   RowBox[{"color", "[", "8", "]"}], "=", 
+   RowBox[{
+    RowBox[{"color", "[", "10", "]"}], "=", "LightGray"}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414261585722911*^9, 3.4142616396893873`*^9}, {
+   3.414261738140223*^9, 3.414261762521162*^9}, {3.414261806806848*^9, 
+   3.414261892863326*^9}, {3.41426217191429*^9, 3.414262219035804*^9}, {
+   3.8360642891077557`*^9, 3.836064294495859*^9}, {3.83606435849522*^9, 
+   3.836064375030431*^9}, {3.836064415004957*^9, 3.836064420035627*^9}, {
+   3.836064514908738*^9, 3.836064522520403*^9}, 3.836064585295053*^9, 
+   3.8360646204752693`*^9, {3.83606469301164*^9, 3.836064693896171*^9}, {
+   3.836064999940798*^9, 3.836065007188491*^9}},
+ CellLabel->"In[47]:=",
+ CellID->1215613972,ExpressionUUID->"33871b65-efe6-4211-a7a0-109b64c0967d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"g2", "[", 
+   RowBox[{"m_", ",", "\[Lambda]_", ",", "int_"}], "]"}], ":=", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{"{", 
+    RowBox[{"Blue", ",", 
+     RowBox[{"Dynamic", "[", 
+      RowBox[{"Refresh", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Point", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Re", "[", "#", "]"}], ",", 
+             RowBox[{"Im", "[", "#", "]"}]}], "}"}], "]"}], "&"}], "/@", 
+         RowBox[{"RandomComplex", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"460", "+", 
+              RowBox[{"100", "\[ImaginaryI]"}]}], ",", 
+             RowBox[{"540", "+", 
+              RowBox[{"240", "\[ImaginaryI]"}]}]}], "}"}], ",", " ", 
+           RowBox[{"Int", "[", 
+            RowBox[{"m", ",", "\[Lambda]", ",", "int"}], "]"}]}], "]"}]}], 
+        ",", 
+        RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], "]"}], ",", 
+     RowBox[{"color", "[", "m", "]"}], ",", 
+     RowBox[{"Polygon", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"450", ",", "300"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"550", ",", "300"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"550", ",", "150"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"450", ",", "250"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"450", ",", "300"}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"Text", "[", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"M", "[", "m", "]"}], ",", "24", ",", "White"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"500", ",", "265"}], "}"}]}], "]"}]}], "}"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414200192809413*^9, 3.414200237019108*^9}, {
+   3.4142003654432907`*^9, 3.414200366271509*^9}, {3.414200425384239*^9, 
+   3.414200425903452*^9}, {3.414200498161957*^9, 3.414200530185606*^9}, {
+   3.414200569034657*^9, 3.414200569895835*^9}, {3.414200608691332*^9, 
+   3.4142006726026697`*^9}, {3.414200910737712*^9, 3.41420091329679*^9}, 
+   3.4142483998003693`*^9, {3.4142484643791513`*^9, 3.414248465601219*^9}, {
+   3.4142486163385878`*^9, 3.4142486301038933`*^9}, 3.414249773453677*^9, {
+   3.414249804534628*^9, 3.414249805273283*^9}, {3.414250578009811*^9, 
+   3.414250701513781*^9}, {3.414251241002822*^9, 3.414251247806582*^9}, {
+   3.4142513353692837`*^9, 3.4142513617907887`*^9}, 3.414251393785201*^9, {
+   3.4142535826592493`*^9, 3.414253604137933*^9}, {3.414261558204101*^9, 
+   3.41426157164116*^9}, 3.4142788751719027`*^9},
+ CellLabel->"In[48]:=",
+ CellID->709723266,ExpressionUUID->"df9500e0-55b7-4698-b6be-62a820883bf8"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection",ExpressionUUID->"2de0f4e3-98e6-4285-90a1-b4a9df18b0e2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"g1", "[", 
+      RowBox[{"m", ",", "\[Lambda]", ",", "int"}], "]"}], ",", 
+     RowBox[{"g2", "[", 
+      RowBox[{"m", ",", "\[Lambda]", ",", "int"}], "]"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"575", ",", "350"}], "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m", ",", "5", ",", "\"\<metal\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", "\"\<Ag\>\""}], ",", 
+       RowBox[{"2", "\[Rule]", "\"\<Al\>\""}], ",", 
+       RowBox[{"3", "\[Rule]", "\"\<Au\>\""}], ",", 
+       RowBox[{"4", "\[Rule]", "\"\<Ca\>\""}], ",", 
+       RowBox[{"5", "\[Rule]", "\"\<Cs\>\""}], ",", 
+       RowBox[{"6", "\[Rule]", "\"\<Cu\>\""}], ",", 
+       RowBox[{"7", "\[Rule]", "\"\<Fe\>\""}], ",", 
+       RowBox[{"8", "\[Rule]", "\"\<K\>\""}], ",", 
+       RowBox[{"9", "\[Rule]", "\"\<Mg\>\""}], ",", 
+       RowBox[{"10", "\[Rule]", "\"\<Na\>\""}], ",", 
+       RowBox[{"11", "\[Rule]", "\"\<Zn\>\""}]}], "}"}], ",", 
+     RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Lambda]", ",", "550", ",", "\"\<wavelength/nm\>\""}], "}"}], 
+     ",", "50", ",", "700", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"int", ",", "75", ",", "\"\<light intensity\>\""}], "}"}], ",", 
+     "0", ",", "100", ",", "1", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{3.836063826588172*^9},
+ CellLabel->"In[49]:=",
+ CellID->328965143,ExpressionUUID->"65217971-52e0-46ce-a336-bfdac1e78bb3"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`int$$ = 75, $CellContext`m$$ = 
+    5, $CellContext`\[Lambda]$$ = 550, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`m$$], 5, "metal"}, {
+      1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+       "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}}, {{
+       Hold[$CellContext`\[Lambda]$$], 550, "wavelength/nm"}, 50, 700}, {{
+       Hold[$CellContext`int$$], 75, "light intensity"}, 0, 100, 1}}, 
+    Typeset`size$$ = {575., {173., 177.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`int$$ = 75, $CellContext`m$$ = 
+        5, $CellContext`\[Lambda]$$ = 550}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`g1[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], 
+        $CellContext`g2[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], ImageSize -> {575, 350}], 
+      "Specifications" :> {{{$CellContext`m$$, 5, "metal"}, {
+         1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+          "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}, ControlType -> 
+         SetterBar}, {{$CellContext`\[Lambda]$$, 550, "wavelength/nm"}, 50, 
+         700, Appearance -> 
+         "Labeled"}, {{$CellContext`int$$, 75, "light intensity"}, 0, 100, 1, 
+         Appearance -> "Labeled"}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{943., {201., 206.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`g1[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Thick, 
+          Line[{{100, 0}, {0, 0}, {0, 400}, {100, 400}}], 
+          Line[{{100, 380}, {100, 420}}], 
+          Line[{{110, 395}, {110, 405}}], 
+          Line[{{120, 380}, {120, 420}}], 
+          Line[{{130, 395}, {130, 405}}], 
+          Line[{{130, 400}, {500, 400}, {500, 325}}], Black, 
+          Rectangle[{450, 75}, {550, 100}], 
+          Rectangle[{450, 300}, {550, 325}], 
+          Line[{{500, 75}, {500, 0}, {200, 0}}], 
+          Rectangle[{200, 155}, {350, 245}], 
+          Polygon[{{350, 245}, {375, 252}, {375, 148}, {350, 155}}], White, 
+          EdgeForm[{Thick, Black}], 
+          Rectangle[{100, -25}, {200, 50}], Black, 
+          Thickness[0.01], 
+          Circle[{150, -10}, 50, {Pi/4, 3 (Pi/4)}], Thick, Red, 
+          
+          Line[{{150, -10}, {
+            150 - 50 
+             Cos[Pi/4 + ($CellContext`Int[$CellContext`m, $CellContext`\
+\[Lambda], $CellContext`int]/100) (Pi/2)], -10 + 
+             50 Sin[Pi/
+                 4 + ($CellContext`Int[$CellContext`m, \
+$CellContext`\[Lambda], $CellContext`int]/100) (Pi/2)]}}], 
+          ColorData["VisibleSpectrum"][$CellContext`\[Lambda]], 
+          EdgeForm[], 
+          Opacity[$CellContext`int/100], 
+          
+          Polygon[{{375, 240}, {460, 240}, {540, 160}, {375, 160}, {375, 
+           225}}]}], $CellContext`Int[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := 
+       If[$CellContext`\[Lambda] <= $CellContext`\[Lambda]0[$CellContext`m], \
+$CellContext`int, 0], $CellContext`\[Lambda]0[1] = 
+       291.0798122065728, $CellContext`\[Lambda]0[2] = 
+       289.7196261682243, $CellContext`\[Lambda]0[3] = 
+       243.1372549019608, $CellContext`\[Lambda]0[4] = 
+       523.2067510548522, $CellContext`\[Lambda]0[5] = 
+       579.4392523364486, $CellContext`\[Lambda]0[6] = 
+       266.66666666666663`, $CellContext`\[Lambda]0[7] = 
+       275.55555555555554`, $CellContext`\[Lambda]0[8] = 
+       539.1304347826087, $CellContext`\[Lambda]0[9] = 
+       338.7978142076502, $CellContext`\[Lambda]0[10] = 
+       543.859649122807, $CellContext`\[Lambda]0[11] = 
+       288.3720930232558, $CellContext`g2[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Blue, 
+          Dynamic[
+           Refresh[
+            Map[Point[{
+               Re[#], 
+               Im[#]}]& , 
+             RandomComplex[{460 + 100 I, 540 + 240 I}, 
+              $CellContext`Int[$CellContext`m, $CellContext`\[Lambda], \
+$CellContext`int]]], UpdateInterval -> 0.1]], 
+          $CellContext`color[$CellContext`m], 
+          
+          Polygon[{{450, 300}, {550, 300}, {550, 150}, {450, 250}, {450, 
+           300}}], 
+          Text[
+           Style[
+            $CellContext`M[$CellContext`m], 24, White], {500, 
+           265}]}], $CellContext`color[3] = 
+       RGBColor[1, 0.843, 0], $CellContext`color[6] = 
+       RGBColor[1, 0.5, 0], $CellContext`color[8] = 
+       GrayLevel[0.85], $CellContext`color[10] = 
+       GrayLevel[0.85], $CellContext`color[
+         Pattern[$CellContext`m, 
+          Blank[]]] := Gray, $CellContext`M[1] = "Ag", $CellContext`M[2] = 
+       "Al", $CellContext`M[3] = "Au", $CellContext`M[4] = 
+       "Ca", $CellContext`M[5] = "Cs", $CellContext`M[6] = 
+       "Cu", $CellContext`M[7] = "Fe", $CellContext`M[8] = 
+       "K", $CellContext`M[9] = "Mg", $CellContext`M[10] = 
+       "Na", $CellContext`M[11] = "Zn"}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1550629530,ExpressionUUID->"d94abe25-c899-446e-9ed6-035c0ab63445"]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection",ExpressionUUID->"86dada70-955a-4f17-ad47-131fc4106019"],
+
+Cell[TextData[{
+ "The photoelectric effect is a quantum-mechanical phenomenon in which light \
+impinging on the surface of a metal can cause electrons to be ejected. Only \
+light with wavelengths shorter than some threshold value ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Lambda]", "0"], TraditionalForm]], "InlineMath",
+  ExpressionUUID->"22e729d5-511f-44c8-9df4-151208f6ef56"],
+ ", characteristic of each metal, can cause emission of photoelectrons, no \
+matter how intense the radiation. Einstein explained this in 1905 by \
+proposing that light is composed of discrete photons, each carrying energy ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"E", "=", 
+    RowBox[{
+     RowBox[{"h", " ", "\[Nu]"}], "=", 
+     FractionBox[
+      RowBox[{"h", " ", "c"}], "\[Lambda]"]}]}], TraditionalForm]], 
+  "InlineMath",ExpressionUUID->"2e1ad478-3417-4875-93fb-dffbe00c1522"],
+ ". Only when the photon energy exceeds the work function ",
+ Cell[BoxData[
+  FormBox["\[CapitalPhi]", TraditionalForm]], "InlineMath",ExpressionUUID->
+  "8be8746b-7be8-4f11-b8d5-b87135d84da7"],
+ " of the metal, a measure of how strongly the outermost electrons are bound, \
+can photoelectrons be emitted. The relevant equation is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{Cell[TextData[Cell[BoxData[
+     FormBox[
+      FractionBox[
+       RowBox[{"h", " ", "c"}], "\[Lambda]"], TraditionalForm]], "InlineMath",
+     ExpressionUUID->"8d8d8d52-6783-49fc-adc3-d5c1fd61fb8a"]], "InlineMath",
+     ExpressionUUID->"d17b2a28-c2b4-45e6-9e59-9ba8e0370739"], "=", 
+    RowBox[{"\[CapitalPhi]", "+", 
+     SubscriptBox["KE", "max"]}]}], TraditionalForm]], "InlineMath",
+  ExpressionUUID->"90c6465c-3c47-4951-b45d-86108ac544c1"],
+ ", where the last term represents the maximum kinetic energy of the ejected \
+electrons. Once the threshold wavelength is attained, the current of \
+electrons increases linearly with the radiation intensity. This can be \
+monitored by an ammeter in the circuit shown. The light source covers the \
+entire visible range 400\[Dash]700 nm. In the ultraviolet region, the light \
+ray appears as black."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414278994430193*^9, 3.414279096771659*^9}, {
+   3.4143402111256275`*^9, 3.4143402268131275`*^9}, {3.41434142042511*^9, 
+   3.414341444611526*^9}, {3.4145215987973166`*^9, 3.414521617640946*^9}, {
+   3.686419164548448*^9, 
+   3.686419191348555*^9}},ExpressionUUID->"50f2f95a-4683-4324-80a4-\
+58930dbbff42"],
+
+Cell["\<\
+Einstein was awarded the 1922 Nobel Prize in Physics for his theory of the \
+photoelectric effect, rather than for his discoveries of the special and \
+general theories of relativity. \
+\>", "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414278994430193*^9, 3.414279096771659*^9}, {
+   3.4143402111256275`*^9, 3.4143402295318775`*^9}},
+ CellID->60519243,ExpressionUUID->"40e32f56-3082-48dd-b328-38f4c110d480"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection",ExpressionUUID->"c3e3641d-53d3-4d6b-a973-8f6836097984"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`int$$ = 50, $CellContext`m$$ = 
+    5, $CellContext`\[Lambda]$$ = 550, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`m$$], 5, "metal"}, {
+      1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+       "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}}, {{
+       Hold[$CellContext`\[Lambda]$$], 550, "wavelength/nm"}, 50, 700}, {{
+       Hold[$CellContext`int$$], 50, "light intensity"}, 0, 100, 1}}, 
+    Typeset`size$$ = {575., {173., 177.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`int$$ = 50, $CellContext`m$$ = 
+        5, $CellContext`\[Lambda]$$ = 550}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`g1[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], 
+        $CellContext`g2[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], ImageSize -> {575, 350}], 
+      "Specifications" :> {{{$CellContext`m$$, 5, "metal"}, {
+         1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+          "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}, ControlType -> 
+         SetterBar}, {{$CellContext`\[Lambda]$$, 550, "wavelength/nm"}, 50, 
+         700, Appearance -> 
+         "Labeled"}, {{$CellContext`int$$, 50, "light intensity"}, 0, 100, 1, 
+         Appearance -> "Labeled"}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{943., {201., 206.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`g1[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Thick, 
+          Line[{{100, 0}, {0, 0}, {0, 400}, {100, 400}}], 
+          Line[{{100, 380}, {100, 420}}], 
+          Line[{{110, 395}, {110, 405}}], 
+          Line[{{120, 380}, {120, 420}}], 
+          Line[{{130, 395}, {130, 405}}], 
+          Line[{{130, 400}, {500, 400}, {500, 325}}], Black, 
+          Rectangle[{450, 75}, {550, 100}], 
+          Rectangle[{450, 300}, {550, 325}], 
+          Line[{{500, 75}, {500, 0}, {200, 0}}], 
+          Rectangle[{200, 155}, {350, 245}], 
+          Polygon[{{350, 245}, {375, 252}, {375, 148}, {350, 155}}], White, 
+          EdgeForm[{Thick, Black}], 
+          Rectangle[{100, -25}, {200, 50}], Black, 
+          Thickness[0.01], 
+          Circle[{150, -10}, 50, {Pi/4, 3 (Pi/4)}], Thick, Red, 
+          
+          Line[{{150, -10}, {
+            150 - 50 
+             Cos[Pi/4 + ($CellContext`Int[$CellContext`m, $CellContext`\
+\[Lambda], $CellContext`int]/100) (Pi/2)], -10 + 
+             50 Sin[Pi/
+                 4 + ($CellContext`Int[$CellContext`m, \
+$CellContext`\[Lambda], $CellContext`int]/100) (Pi/2)]}}], 
+          ColorData["VisibleSpectrum"][$CellContext`\[Lambda]], 
+          EdgeForm[], 
+          Opacity[$CellContext`int/100], 
+          
+          Polygon[{{375, 240}, {460, 240}, {540, 160}, {375, 160}, {375, 
+           225}}]}], $CellContext`Int[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := 
+       If[$CellContext`\[Lambda] <= $CellContext`\[Lambda]0[$CellContext`m], \
+$CellContext`int, 0], $CellContext`\[Lambda]0[1] = 
+       291.0798122065728, $CellContext`\[Lambda]0[2] = 
+       289.7196261682243, $CellContext`\[Lambda]0[3] = 
+       243.1372549019608, $CellContext`\[Lambda]0[4] = 
+       523.2067510548522, $CellContext`\[Lambda]0[5] = 
+       579.4392523364486, $CellContext`\[Lambda]0[6] = 
+       266.66666666666663`, $CellContext`\[Lambda]0[7] = 
+       275.55555555555554`, $CellContext`\[Lambda]0[8] = 
+       539.1304347826087, $CellContext`\[Lambda]0[9] = 
+       338.7978142076502, $CellContext`\[Lambda]0[10] = 
+       543.859649122807, $CellContext`\[Lambda]0[11] = 
+       288.3720930232558, $CellContext`g2[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Blue, 
+          Dynamic[
+           Refresh[
+            Map[Point[{
+               Re[#], 
+               Im[#]}]& , 
+             RandomComplex[{460 + 100 I, 540 + 240 I}, 
+              $CellContext`Int[$CellContext`m, $CellContext`\[Lambda], \
+$CellContext`int]]], UpdateInterval -> 0.1]], 
+          $CellContext`color[$CellContext`m], 
+          
+          Polygon[{{450, 300}, {550, 300}, {550, 150}, {450, 250}, {450, 
+           300}}], 
+          Text[
+           Style[
+            $CellContext`M[$CellContext`m], 24, White], {500, 
+           265}]}], $CellContext`color[3] = 
+       RGBColor[1, 0.843, 0], $CellContext`color[6] = 
+       RGBColor[1, 0.5, 0], $CellContext`color[8] = 
+       GrayLevel[0.85], $CellContext`color[10] = 
+       GrayLevel[0.85], $CellContext`color[
+         Pattern[$CellContext`m, 
+          Blank[]]] := Gray, $CellContext`M[1] = "Ag", $CellContext`M[2] = 
+       "Al", $CellContext`M[3] = "Au", $CellContext`M[4] = 
+       "Ca", $CellContext`M[5] = "Cs", $CellContext`M[6] = 
+       "Cu", $CellContext`M[7] = "Fe", $CellContext`M[8] = 
+       "K", $CellContext`M[9] = "Mg", $CellContext`M[10] = 
+       "Na", $CellContext`M[11] = "Zn"}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1716454365,ExpressionUUID->"e868e972-ccf6-46e6-9c08-7624a972350d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection",ExpressionUUID->"aefa7b81-e770-4e7f-bc47-3d7c3b3ce974"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`int$$ = 100, $CellContext`m$$ = 
+    1, $CellContext`\[Lambda]$$ = 550, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`m$$], 1, "metal"}, {
+      1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+       "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}}, {{
+       Hold[$CellContext`\[Lambda]$$], 550, "wavelength/nm"}, 50, 700}, {{
+       Hold[$CellContext`int$$], 100, "light intensity"}, 0, 100, 1}}, 
+    Typeset`size$$ = {575., {173., 177.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`int$$ = 100, $CellContext`m$$ = 
+        1, $CellContext`\[Lambda]$$ = 550}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`g1[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], 
+        $CellContext`g2[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], ImageSize -> {575, 350}], 
+      "Specifications" :> {{{$CellContext`m$$, 1, "metal"}, {
+         1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+          "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}, ControlType -> 
+         SetterBar}, {{$CellContext`\[Lambda]$$, 550, "wavelength/nm"}, 50, 
+         700, Appearance -> 
+         "Labeled"}, {{$CellContext`int$$, 100, "light intensity"}, 0, 100, 1,
+          Appearance -> "Labeled"}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{943., {201., 206.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`g1[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Thick, 
+          Line[{{100, 0}, {0, 0}, {0, 400}, {100, 400}}], 
+          Line[{{100, 380}, {100, 420}}], 
+          Line[{{110, 395}, {110, 405}}], 
+          Line[{{120, 380}, {120, 420}}], 
+          Line[{{130, 395}, {130, 405}}], 
+          Line[{{130, 400}, {500, 400}, {500, 325}}], Black, 
+          Rectangle[{450, 75}, {550, 100}], 
+          Rectangle[{450, 300}, {550, 325}], 
+          Line[{{500, 75}, {500, 0}, {200, 0}}], 
+          Rectangle[{200, 155}, {350, 245}], 
+          Polygon[{{350, 245}, {375, 252}, {375, 148}, {350, 155}}], White, 
+          EdgeForm[{Thick, Black}], 
+          Rectangle[{100, -25}, {200, 50}], Black, 
+          Thickness[0.01], 
+          Circle[{150, -10}, 50, {Pi/4, 3 (Pi/4)}], Thick, Red, 
+          
+          Line[{{150, -10}, {
+            150 - 50 
+             Cos[Pi/4 + ($CellContext`Int[$CellContext`m, $CellContext`\
+\[Lambda], $CellContext`int]/100) (Pi/2)], -10 + 
+             50 Sin[Pi/
+                 4 + ($CellContext`Int[$CellContext`m, \
+$CellContext`\[Lambda], $CellContext`int]/100) (Pi/2)]}}], 
+          ColorData["VisibleSpectrum"][$CellContext`\[Lambda]], 
+          EdgeForm[], 
+          Opacity[$CellContext`int/100], 
+          
+          Polygon[{{375, 240}, {460, 240}, {540, 160}, {375, 160}, {375, 
+           225}}]}], $CellContext`Int[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := 
+       If[$CellContext`\[Lambda] <= $CellContext`\[Lambda]0[$CellContext`m], \
+$CellContext`int, 0], $CellContext`\[Lambda]0[1] = 
+       291.0798122065728, $CellContext`\[Lambda]0[2] = 
+       289.7196261682243, $CellContext`\[Lambda]0[3] = 
+       243.1372549019608, $CellContext`\[Lambda]0[4] = 
+       523.2067510548522, $CellContext`\[Lambda]0[5] = 
+       579.4392523364486, $CellContext`\[Lambda]0[6] = 
+       266.66666666666663`, $CellContext`\[Lambda]0[7] = 
+       275.55555555555554`, $CellContext`\[Lambda]0[8] = 
+       539.1304347826087, $CellContext`\[Lambda]0[9] = 
+       338.7978142076502, $CellContext`\[Lambda]0[10] = 
+       543.859649122807, $CellContext`\[Lambda]0[11] = 
+       288.3720930232558, $CellContext`g2[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Blue, 
+          Dynamic[
+           Refresh[
+            Map[Point[{
+               Re[#], 
+               Im[#]}]& , 
+             RandomComplex[{460 + 100 I, 540 + 240 I}, 
+              $CellContext`Int[$CellContext`m, $CellContext`\[Lambda], \
+$CellContext`int]]], UpdateInterval -> 0.1]], 
+          $CellContext`color[$CellContext`m], 
+          
+          Polygon[{{450, 300}, {550, 300}, {550, 150}, {450, 250}, {450, 
+           300}}], 
+          Text[
+           Style[
+            $CellContext`M[$CellContext`m], 24, White], {500, 
+           265}]}], $CellContext`color[3] = 
+       RGBColor[1, 0.843, 0], $CellContext`color[6] = 
+       RGBColor[1, 0.5, 0], $CellContext`color[8] = 
+       GrayLevel[0.85], $CellContext`color[10] = 
+       GrayLevel[0.85], $CellContext`color[
+         Pattern[$CellContext`m, 
+          Blank[]]] := Gray, $CellContext`M[1] = "Ag", $CellContext`M[2] = 
+       "Al", $CellContext`M[3] = "Au", $CellContext`M[4] = 
+       "Ca", $CellContext`M[5] = "Cs", $CellContext`M[6] = 
+       "Cu", $CellContext`M[7] = "Fe", $CellContext`M[8] = 
+       "K", $CellContext`M[9] = "Mg", $CellContext`M[10] = 
+       "Na", $CellContext`M[11] = "Zn"}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1300682404,ExpressionUUID->"073b6302-8e0c-421f-b796-99fcf97a2977"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`int$$ = 50, $CellContext`m$$ = 
+    1, $CellContext`\[Lambda]$$ = 290., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`m$$], 1, "metal"}, {
+      1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+       "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}}, {{
+       Hold[$CellContext`\[Lambda]$$], 290., "wavelength/nm"}, 50, 700}, {{
+       Hold[$CellContext`int$$], 50, "light intensity"}, 0, 100, 1}}, 
+    Typeset`size$$ = {575., {173., 177.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`int$$ = 50, $CellContext`m$$ = 
+        1, $CellContext`\[Lambda]$$ = 290.}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`g1[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], 
+        $CellContext`g2[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], ImageSize -> {575, 350}], 
+      "Specifications" :> {{{$CellContext`m$$, 1, "metal"}, {
+         1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+          "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}, ControlType -> 
+         SetterBar}, {{$CellContext`\[Lambda]$$, 290., "wavelength/nm"}, 50, 
+         700, Appearance -> 
+         "Labeled"}, {{$CellContext`int$$, 50, "light intensity"}, 0, 100, 1, 
+         Appearance -> "Labeled"}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{943., {201., 206.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`g1[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Thick, 
+          Line[{{100, 0}, {0, 0}, {0, 400}, {100, 400}}], 
+          Line[{{100, 380}, {100, 420}}], 
+          Line[{{110, 395}, {110, 405}}], 
+          Line[{{120, 380}, {120, 420}}], 
+          Line[{{130, 395}, {130, 405}}], 
+          Line[{{130, 400}, {500, 400}, {500, 325}}], Black, 
+          Rectangle[{450, 75}, {550, 100}], 
+          Rectangle[{450, 300}, {550, 325}], 
+          Line[{{500, 75}, {500, 0}, {200, 0}}], 
+          Rectangle[{200, 155}, {350, 245}], 
+          Polygon[{{350, 245}, {375, 252}, {375, 148}, {350, 155}}], White, 
+          EdgeForm[{Thick, Black}], 
+          Rectangle[{100, -25}, {200, 50}], Black, 
+          Thickness[0.01], 
+          Circle[{150, -10}, 50, {Pi/4, 3 (Pi/4)}], Thick, Red, 
+          
+          Line[{{150, -10}, {
+            150 - 50 
+             Cos[Pi/4 + ($CellContext`Int[$CellContext`m, $CellContext`\
+\[Lambda], $CellContext`int]/100) (Pi/2)], -10 + 
+             50 Sin[Pi/
+                 4 + ($CellContext`Int[$CellContext`m, \
+$CellContext`\[Lambda], $CellContext`int]/100) (Pi/2)]}}], 
+          ColorData["VisibleSpectrum"][$CellContext`\[Lambda]], 
+          EdgeForm[], 
+          Opacity[$CellContext`int/100], 
+          
+          Polygon[{{375, 240}, {460, 240}, {540, 160}, {375, 160}, {375, 
+           225}}]}], $CellContext`Int[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := 
+       If[$CellContext`\[Lambda] <= $CellContext`\[Lambda]0[$CellContext`m], \
+$CellContext`int, 0], $CellContext`\[Lambda]0[1] = 
+       291.0798122065728, $CellContext`\[Lambda]0[2] = 
+       289.7196261682243, $CellContext`\[Lambda]0[3] = 
+       243.1372549019608, $CellContext`\[Lambda]0[4] = 
+       523.2067510548522, $CellContext`\[Lambda]0[5] = 
+       579.4392523364486, $CellContext`\[Lambda]0[6] = 
+       266.66666666666663`, $CellContext`\[Lambda]0[7] = 
+       275.55555555555554`, $CellContext`\[Lambda]0[8] = 
+       539.1304347826087, $CellContext`\[Lambda]0[9] = 
+       338.7978142076502, $CellContext`\[Lambda]0[10] = 
+       543.859649122807, $CellContext`\[Lambda]0[11] = 
+       288.3720930232558, $CellContext`g2[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Blue, 
+          Dynamic[
+           Refresh[
+            Map[Point[{
+               Re[#], 
+               Im[#]}]& , 
+             RandomComplex[{460 + 100 I, 540 + 240 I}, 
+              $CellContext`Int[$CellContext`m, $CellContext`\[Lambda], \
+$CellContext`int]]], UpdateInterval -> 0.1]], 
+          $CellContext`color[$CellContext`m], 
+          
+          Polygon[{{450, 300}, {550, 300}, {550, 150}, {450, 250}, {450, 
+           300}}], 
+          Text[
+           Style[
+            $CellContext`M[$CellContext`m], 24, White], {500, 
+           265}]}], $CellContext`color[3] = 
+       RGBColor[1, 0.843, 0], $CellContext`color[6] = 
+       RGBColor[1, 0.5, 0], $CellContext`color[8] = 
+       GrayLevel[0.85], $CellContext`color[10] = 
+       GrayLevel[0.85], $CellContext`color[
+         Pattern[$CellContext`m, 
+          Blank[]]] := Gray, $CellContext`M[1] = "Ag", $CellContext`M[2] = 
+       "Al", $CellContext`M[3] = "Au", $CellContext`M[4] = 
+       "Ca", $CellContext`M[5] = "Cs", $CellContext`M[6] = 
+       "Cu", $CellContext`M[7] = "Fe", $CellContext`M[8] = 
+       "K", $CellContext`M[9] = "Mg", $CellContext`M[10] = 
+       "Na", $CellContext`M[11] = "Zn"}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1333121215,ExpressionUUID->"55a17962-d3d3-4493-b4e2-0f09b85a3545"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`int$$ = 100, $CellContext`m$$ = 
+    1, $CellContext`\[Lambda]$$ = 290., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`m$$], 1, "metal"}, {
+      1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+       "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}}, {{
+       Hold[$CellContext`\[Lambda]$$], 290., "wavelength/nm"}, 50, 700}, {{
+       Hold[$CellContext`int$$], 100, "light intensity"}, 0, 100, 1}}, 
+    Typeset`size$$ = {575., {173., 177.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`int$$ = 100, $CellContext`m$$ = 
+        1, $CellContext`\[Lambda]$$ = 290.}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        $CellContext`g1[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], 
+        $CellContext`g2[$CellContext`m$$, $CellContext`\[Lambda]$$, \
+$CellContext`int$$], ImageSize -> {575, 350}], 
+      "Specifications" :> {{{$CellContext`m$$, 1, "metal"}, {
+         1 -> "Ag", 2 -> "Al", 3 -> "Au", 4 -> "Ca", 5 -> "Cs", 6 -> "Cu", 7 -> 
+          "Fe", 8 -> "K", 9 -> "Mg", 10 -> "Na", 11 -> "Zn"}, ControlType -> 
+         SetterBar}, {{$CellContext`\[Lambda]$$, 290., "wavelength/nm"}, 50, 
+         700, Appearance -> 
+         "Labeled"}, {{$CellContext`int$$, 100, "light intensity"}, 0, 100, 1,
+          Appearance -> "Labeled"}}, "Options" :> {}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{943., {201., 206.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`g1[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Thick, 
+          Line[{{100, 0}, {0, 0}, {0, 400}, {100, 400}}], 
+          Line[{{100, 380}, {100, 420}}], 
+          Line[{{110, 395}, {110, 405}}], 
+          Line[{{120, 380}, {120, 420}}], 
+          Line[{{130, 395}, {130, 405}}], 
+          Line[{{130, 400}, {500, 400}, {500, 325}}], Black, 
+          Rectangle[{450, 75}, {550, 100}], 
+          Rectangle[{450, 300}, {550, 325}], 
+          Line[{{500, 75}, {500, 0}, {200, 0}}], 
+          Rectangle[{200, 155}, {350, 245}], 
+          Polygon[{{350, 245}, {375, 252}, {375, 148}, {350, 155}}], White, 
+          EdgeForm[{Thick, Black}], 
+          Rectangle[{100, -25}, {200, 50}], Black, 
+          Thickness[0.01], 
+          Circle[{150, -10}, 50, {Pi/4, 3 (Pi/4)}], Thick, Red, 
+          
+          Line[{{150, -10}, {
+            150 - 50 
+             Cos[Pi/4 + ($CellContext`Int[$CellContext`m, $CellContext`\
+\[Lambda], $CellContext`int]/100) (Pi/2)], -10 + 
+             50 Sin[Pi/
+                 4 + ($CellContext`Int[$CellContext`m, \
+$CellContext`\[Lambda], $CellContext`int]/100) (Pi/2)]}}], 
+          ColorData["VisibleSpectrum"][$CellContext`\[Lambda]], 
+          EdgeForm[], 
+          Opacity[$CellContext`int/100], 
+          
+          Polygon[{{375, 240}, {460, 240}, {540, 160}, {375, 160}, {375, 
+           225}}]}], $CellContext`Int[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := 
+       If[$CellContext`\[Lambda] <= $CellContext`\[Lambda]0[$CellContext`m], \
+$CellContext`int, 0], $CellContext`\[Lambda]0[1] = 
+       291.0798122065728, $CellContext`\[Lambda]0[2] = 
+       289.7196261682243, $CellContext`\[Lambda]0[3] = 
+       243.1372549019608, $CellContext`\[Lambda]0[4] = 
+       523.2067510548522, $CellContext`\[Lambda]0[5] = 
+       579.4392523364486, $CellContext`\[Lambda]0[6] = 
+       266.66666666666663`, $CellContext`\[Lambda]0[7] = 
+       275.55555555555554`, $CellContext`\[Lambda]0[8] = 
+       539.1304347826087, $CellContext`\[Lambda]0[9] = 
+       338.7978142076502, $CellContext`\[Lambda]0[10] = 
+       543.859649122807, $CellContext`\[Lambda]0[11] = 
+       288.3720930232558, $CellContext`g2[
+         Pattern[$CellContext`m, 
+          Blank[]], 
+         Pattern[$CellContext`\[Lambda], 
+          Blank[]], 
+         Pattern[$CellContext`int, 
+          Blank[]]] := Graphics[{Blue, 
+          Dynamic[
+           Refresh[
+            Map[Point[{
+               Re[#], 
+               Im[#]}]& , 
+             RandomComplex[{460 + 100 I, 540 + 240 I}, 
+              $CellContext`Int[$CellContext`m, $CellContext`\[Lambda], \
+$CellContext`int]]], UpdateInterval -> 0.1]], 
+          $CellContext`color[$CellContext`m], 
+          
+          Polygon[{{450, 300}, {550, 300}, {550, 150}, {450, 250}, {450, 
+           300}}], 
+          Text[
+           Style[
+            $CellContext`M[$CellContext`m], 24, White], {500, 
+           265}]}], $CellContext`color[3] = 
+       RGBColor[1, 0.843, 0], $CellContext`color[6] = 
+       RGBColor[1, 0.5, 0], $CellContext`color[8] = 
+       GrayLevel[0.85], $CellContext`color[10] = 
+       GrayLevel[0.85], $CellContext`color[
+         Pattern[$CellContext`m, 
+          Blank[]]] := Gray, $CellContext`M[1] = "Ag", $CellContext`M[2] = 
+       "Al", $CellContext`M[3] = "Au", $CellContext`M[4] = 
+       "Ca", $CellContext`M[5] = "Cs", $CellContext`M[6] = 
+       "Cu", $CellContext`M[7] = "Fe", $CellContext`M[8] = 
+       "K", $CellContext`M[9] = "Mg", $CellContext`M[10] = 
+       "Na", $CellContext`M[11] = "Zn"}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1071371354,ExpressionUUID->"995f04b6-53da-47b2-9a4a-acc2dc194be5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection",ExpressionUUID->"bbe9fa39-956b-4c09-8683-becfaf943b14"],
+
+Cell["\<\
+Snapshot 1: above the threshold wavelength, there is no emission of \
+photoelectrons, no matter how high the radiation intensity\
+\>", "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414269693705415*^9, 3.414269714116776*^9}, {
+   3.414270156055745*^9, 3.414270209786954*^9}, {3.414521636984572*^9, 
+   3.4145216383439384`*^9}},
+ CellID->1388305653,ExpressionUUID->"31cf5eca-63b0-42dd-918e-845ba56c00b2"],
+
+Cell["\<\
+Snapshot 2: at the threshold wavelength for Ag, around 290 nm, the \
+photoelectric effect occurs\
+\>", "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, 3.414270227622731*^9, {3.414271542223794*^9, 
+   3.4142716351782503`*^9}, {3.414521642937659*^9, 3.4145216466563854`*^9}},
+ CellID->843285316,ExpressionUUID->"d5a65b46-0fad-4471-adbc-8df601a2cac5"],
+
+Cell["\<\
+Snapshot 3: once the threshold is reached, the electron current increases \
+linearly with radiation intensity\
+\>", "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.41427168184492*^9, 3.414271723905246*^9}, {
+   3.4145216410782957`*^9, 3.4145216495626163`*^9}},
+ CellID->1851719459,ExpressionUUID->"c3e36e70-1dc8-4bea-921c-c1a4997d3ac9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection",ExpressionUUID->"675ac63e-49c8-4498-b600-db25e4968a18"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Resize Images",ExpressionUUID->"815cd823-e4d4-4e73-9cda-7f0478573606"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.4143401804225025`*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "ResizeImages",ExpressionUUID->"77d4b935-d97d-4d0c-a225-e21a52cb6101"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Rotate and Zoom in 3D",ExpressionUUID->
+    "3080df4d-138f-42ee-adf9-a738376f783c"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "RotateAndZoomIn3D",ExpressionUUID->"dc114ba0-52a9-4444-9bb7-27eb99e37324"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Drag Locators",ExpressionUUID->"41aaee2b-dabd-4054-a5dc-a17d9f3d95fb"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "DragLocators",ExpressionUUID->"04e51420-c6dd-4112-8e42-df3617591c96"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Create and Delete Locators",ExpressionUUID->
+    "2becd1cd-3615-4254-851b-0c92c3e8cf6f"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "CreateAndDeleteLocators",ExpressionUUID->"db8120c8-4d97-46c9-b14b-\
+6de648779e7a"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Slider Zoom",ExpressionUUID->"f7cc2838-5e79-4a45-b844-fe0771c4c9af"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.686423298263474*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "SliderZoom",ExpressionUUID->"37885801-be13-4678-9daf-b3196d991a8d"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Gamepad Controls",ExpressionUUID->
+    "18cb5e03-0b87-42e2-927d-7e568d756877"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9, 
+  3.686423299175462*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "GamepadControls",ExpressionUUID->"7e4430db-6828-4ee1-b722-ffc701be8bd4"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[
+   " Automatic Animation",ExpressionUUID->
+    "4a2d0daa-d8fb-4f32-aa94-bb2648ba4744"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.68642330030739*^9},
+ FontFamily->"Verdana",
+ CellTags->
+  "AutomaticAnimation",ExpressionUUID->"fa6c7478-2f61-406c-8a63-b7b3bcf67a84"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[
+   " Bookmark Animation",ExpressionUUID->
+    "78f8d638-d054-4b3f-8ca1-373052732beb"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0], BoxBaselineShift -> 
+     0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->
+  "BookmarkAnimation",ExpressionUUID->"6a6570e6-18ef-4693-b7fc-6f567dc8fb01"]
+}, Open  ]],
+
+Cell["", "SearchTermsSection",ExpressionUUID->"3107a2d1-34de-43a9-aca4-0a5f5b96092b"],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection",ExpressionUUID->"07c7e237-f057-4b51-b13e-b63e35984198"],
+
+Cell[TextData[ButtonBox["Photoelectric Effect",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/PhotoelectricEffect.html"], 
+   None}]], "RelatedLinks",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4142792124997253`*^9, 3.414279238322393*^9}},
+ CellID->1926262006,ExpressionUUID->"9bc0aec7-bd19-48fd-8602-8533af98c1c3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection",ExpressionUUID->"6f90ac24-9235-4516-b577-0833ff344d0d"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["S. M. Blinder",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=S.+M.+Blinder"],
+     None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=S.+M.+Blinder"]
+}], "Author",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.414279242380458*^9, 
+   3.4142792463133163`*^9}},ExpressionUUID->"f3cfb1df-a8c4-46a1-9551-\
+029590ba07f9"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{921, 681},
+WindowMargins->{{7, Automatic}, {Automatic, 18}},
+Magnification->1.,
+FrontEndVersion->"12.3 for Mac OS X ARM (64-bit) (May 13, 2021)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"88ccb26e-9966-4826-ac99-22e6bfec6156"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[55801, 1284, 493, 11, 29, "ControlSuggestions",ExpressionUUID->"77d4b935-d97d-4d0c-a225-e21a52cb6101",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[56297, 1297, 800, 19, 29, "ControlSuggestions",ExpressionUUID->"dc114ba0-52a9-4444-9bb7-27eb99e37324",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[57100, 1318, 457, 13, 29, "ControlSuggestions",ExpressionUUID->"04e51420-c6dd-4112-8e42-df3617591c96",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[57560, 1333, 761, 19, 29, "ControlSuggestions",ExpressionUUID->"db8120c8-4d97-46c9-b14b-6de648779e7a",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[58324, 1354, 1002, 24, 29, "ControlSuggestions",ExpressionUUID->"37885801-be13-4678-9daf-b3196d991a8d",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[59329, 1380, 515, 13, 29, "ControlSuggestions",ExpressionUUID->"7e4430db-6828-4ee1-b722-ffc701be8bd4",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[59847, 1395, 1574, 35, 29, "ControlSuggestions",ExpressionUUID->"fa6c7478-2f61-406c-8a63-b7b3bcf67a84",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[61424, 1432, 1004, 24, 29, "ControlSuggestions",ExpressionUUID->"6a6570e6-18ef-4693-b7fc-6f567dc8fb01",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 64037, 1509},
+ {"RotateAndZoomIn3D", 64202, 1512},
+ {"DragLocators", 64367, 1515},
+ {"CreateAndDeleteLocators", 64538, 1518},
+ {"SliderZoom", 64707, 1521},
+ {"GamepadControls", 64869, 1524},
+ {"AutomaticAnimation", 65038, 1527},
+ {"BookmarkAnimation", 65210, 1530}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[585, 22, 168, 3, 76, "DemoTitle",ExpressionUUID->"b3fc801c-913d-48d7-80f3-33176270bb70"],
+Cell[CellGroupData[{
+Cell[778, 29, 88, 0, 301, "InitializationSection",ExpressionUUID->"60c20e48-00eb-4bad-9eca-ba531b762068"],
+Cell[869, 31, 1010, 27, 218, "Input",ExpressionUUID->"b0e108e9-2c20-4c2f-afdd-fe2e9e1fa664",
+ CellID->1004038009],
+Cell[1882, 60, 1464, 39, 218, "Input",ExpressionUUID->"04d78fd9-3784-4274-86d9-928b94baaca6",
+ CellID->2087802784],
+Cell[3349, 101, 524, 13, 27, "Input",ExpressionUUID->"94cb27e6-21c8-4faf-80ba-8295ec552dae",
+ CellID->1846947007],
+Cell[3876, 116, 9249, 217, 248, "Input",ExpressionUUID->"b60e0c07-6bd2-4963-b15b-4e57fc70b8a4",
+ CellID->616246633],
+Cell[13128, 335, 1195, 26, 85, "Input",ExpressionUUID->"33871b65-efe6-4211-a7a0-109b64c0967d",
+ CellID->1215613972],
+Cell[14326, 363, 2741, 65, 104, "Input",ExpressionUUID->"df9500e0-55b7-4698-b6be-62a820883bf8",
+ CellID->709723266]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[17104, 433, 84, 0, 205, "ManipulateSection",ExpressionUUID->"2de0f4e3-98e6-4285-90a1-b4a9df18b0e2"],
+Cell[CellGroupData[{
+Cell[17213, 437, 1885, 45, 85, "Input",ExpressionUUID->"65217971-52e0-46ce-a336-bfdac1e78bb3",
+ CellID->328965143],
+Cell[19101, 484, 6394, 135, 419, "Output",ExpressionUUID->"d94abe25-c899-446e-9ed6-035c0ab63445",
+ CellID->1550629530]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25541, 625, 91, 0, 181, "ManipulateCaptionSection",ExpressionUUID->"86dada70-955a-4f17-ad47-131fc4106019"],
+Cell[25635, 627, 2467, 49, 153, "ManipulateCaption",ExpressionUUID->"50f2f95a-4683-4324-80a4-58930dbbff42"],
+Cell[28105, 678, 439, 8, 39, "ManipulateCaption",ExpressionUUID->"40e32f56-3082-48dd-b328-38f4c110d480",
+ CellID->60519243]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28581, 691, 83, 0, 179, "ThumbnailSection",ExpressionUUID->"c3e3641d-53d3-4d6b-a973-8f6836097984"],
+Cell[28667, 693, 6394, 135, 419, "Output",ExpressionUUID->"e868e972-ccf6-46e6-9c08-7624a972350d",
+ CellID->1716454365]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35098, 833, 83, 0, 149, "SnapshotsSection",ExpressionUUID->"aefa7b81-e770-4e7f-bc47-3d7c3b3ce974"],
+Cell[35184, 835, 6398, 135, 419, "Output",ExpressionUUID->"073b6302-8e0c-421f-b796-99fcf97a2977",
+ CellID->1300682404],
+Cell[41585, 972, 6398, 135, 419, "Output",ExpressionUUID->"55a17962-d3d3-4493-b4e2-0f09b85a3545",
+ CellID->1333121215],
+Cell[47986, 1109, 6402, 135, 419, "Output",ExpressionUUID->"995f04b6-53da-47b2-9a4a-acc2dc194be5",
+ CellID->1071371354]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54425, 1249, 81, 0, 359, "DetailsSection",ExpressionUUID->"bbe9fa39-956b-4c09-8683-becfaf943b14"],
+Cell[54509, 1251, 427, 8, 23, "DetailNotes",ExpressionUUID->"31cf5eca-63b0-42dd-918e-845ba56c00b2",
+ CellID->1388305653],
+Cell[54939, 1261, 368, 7, 23, "DetailNotes",ExpressionUUID->"d5a65b46-0fad-4471-adbc-8df601a2cac5",
+ CellID->843285316],
+Cell[55310, 1270, 359, 7, 23, "DetailNotes",ExpressionUUID->"c3e36e70-1dc8-4bea-921c-c1a4997d3ac9",
+ CellID->1851719459]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55706, 1282, 92, 0, 131, "ControlSuggestionsSection",ExpressionUUID->"675ac63e-49c8-4498-b600-db25e4968a18"],
+Cell[55801, 1284, 493, 11, 29, "ControlSuggestions",ExpressionUUID->"77d4b935-d97d-4d0c-a225-e21a52cb6101",
+ CellTags->"ResizeImages"],
+Cell[56297, 1297, 800, 19, 29, "ControlSuggestions",ExpressionUUID->"dc114ba0-52a9-4444-9bb7-27eb99e37324",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[57100, 1318, 457, 13, 29, "ControlSuggestions",ExpressionUUID->"04e51420-c6dd-4112-8e42-df3617591c96",
+ CellTags->"DragLocators"],
+Cell[57560, 1333, 761, 19, 29, "ControlSuggestions",ExpressionUUID->"db8120c8-4d97-46c9-b14b-6de648779e7a",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[58324, 1354, 1002, 24, 29, "ControlSuggestions",ExpressionUUID->"37885801-be13-4678-9daf-b3196d991a8d",
+ CellTags->"SliderZoom"],
+Cell[59329, 1380, 515, 13, 29, "ControlSuggestions",ExpressionUUID->"7e4430db-6828-4ee1-b722-ffc701be8bd4",
+ CellTags->"GamepadControls"],
+Cell[59847, 1395, 1574, 35, 29, "ControlSuggestions",ExpressionUUID->"fa6c7478-2f61-406c-8a63-b7b3bcf67a84",
+ CellTags->"AutomaticAnimation"],
+Cell[61424, 1432, 1004, 24, 29, "ControlSuggestions",ExpressionUUID->"6a6570e6-18ef-4693-b7fc-6f567dc8fb01",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[62443, 1459, 85, 0, 165, "SearchTermsSection",ExpressionUUID->"3107a2d1-34de-43a9-aca4-0a5f5b96092b"],
+Cell[CellGroupData[{
+Cell[62553, 1463, 86, 0, 137, "RelatedLinksSection",ExpressionUUID->"07c7e237-f057-4b51-b13e-b63e35984198"],
+Cell[62642, 1465, 360, 7, 23, "RelatedLinks",ExpressionUUID->"9bc0aec7-bd19-48fd-8602-8533af98c1c3",
+ CellID->1926262006]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63039, 1477, 80, 0, 149, "AuthorSection",ExpressionUUID->"6f90ac24-9235-4516-b577-0833ff344d0d"],
+Cell[63122, 1479, 452, 13, 23, "Author",ExpressionUUID->"f3cfb1df-a8c4-46a1-9551-029590ba07f9"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
